@@ -56,7 +56,7 @@ RUN apk --update add --virtual build_deps build-base zlib-dev pcre-dev libressl-
     && cd .. && rm -rf nginx-$NGINX_VERSION \
     && mkdir /var/cache/nginx \
     && rm /etc/nginx/*.default \
-    $$ mkdir -p /etc/nginx/stat \
+    && mkdir -p /etc/nginx/stat \
     && apk del build_deps && rm /var/cache/apk/*
 
 COPY stat.xsl /etc/nginx/stat/
