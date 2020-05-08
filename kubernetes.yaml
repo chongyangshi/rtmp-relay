@@ -37,7 +37,7 @@ spec:
             secretKeyRef:
               name: rtmp-relay
               key: push-rtmp-url
-        image: icydoge/web:rtmp-relay-3320c14
+        image: icydoge/web:rtmp-relay-d645fe8
         imagePullPolicy: IfNotPresent
         name: rtmp-relay
         ports:

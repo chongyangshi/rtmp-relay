@@ -63,7 +63,6 @@ COPY stat.xsl /etc/nginx/stat/
 COPY nginx.conf /etc/nginx/
 COPY init.sh /
 RUN chmod +x /init.sh
-ADD conf.d /etc/nginx/conf.d
 
 VOLUME ["/var/cache/nginx"]
 EXPOSE 80
