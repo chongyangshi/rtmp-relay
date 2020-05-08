@@ -1,6 +1,7 @@
 ARG ALPINE_VERSION=3.11
-ARG NGINX_RTMP_MODULE_VERSION=1.2.1
 FROM alpine:$ALPINE_VERSION
+
+ENV NGINX_RTMP_MODULE_VERSION="1.2.1"
 
 RUN apk --update add pcre libbz2 ca-certificates libressl ffmpeg && rm /var/cache/apk/*
 
