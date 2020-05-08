@@ -10,7 +10,8 @@ WORKDIR /tmp
 
 ENV NGINX_VERSION=1.17.7
 
-# add compilation env, build required C based gems and cleanup
+# Add compilation env, build required C based gems and cleanup
+# Note that https://github.com/arut/nginx-rtmp-module/issues/1283 requires -Wimplicit-fallthrough=0 
 RUN apk --update add --virtual build_deps build-base zlib-dev pcre-dev libressl-dev \
     && wget -O /tmp/nginx-rtmp-module.tar.gz https://github.com/arut/nginx-rtmp-module/archive/v1.2.1.tar.gz \
     && mkdir -p /tmp/nginx-rtmp-module \
@@ -48,7 +49,7 @@ RUN apk --update add --virtual build_deps build-base zlib-dev pcre-dev libressl-
        --without-mail_imap_module \
        --without-mail_smtp_module \
        --with-pcre-jit \
-       --with-cc-opt='-g -O2 -fstack-protector-strong -Wformat -Werror=format-security' \
+       --with-cc-opt='-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wimplicit-fallthrough=0' \
        --with-ld-opt='-Wl,-z,relro -Wl,--as-needed' \
        --add-module=/tmp/nginx-rtmp-module/nginx-rtmp-module-$NGINX_RTMP_MODULE_VERSION \
     && make install \
