@@ -15,7 +15,7 @@ spec:
   strategy:
     rollingUpdate:
       maxSurge: 100%
-      maxUnavailable: 0%
+      maxUnavailable: 100%
     type: RollingUpdate
   template:
     metadata:
@@ -37,7 +37,7 @@ spec:
             secretKeyRef:
               name: rtmp-relay
               key: push-rtmp-url
-        image: icydoge/web:rtmp-relay-7373052
+        image: icydoge/web:rtmp-relay-772b9f7
         imagePullPolicy: IfNotPresent
         name: rtmp-relay
         ports:
