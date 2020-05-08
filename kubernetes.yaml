@@ -60,8 +60,7 @@ spec:
       securityContext: {}
       terminationGracePeriodSeconds: 30
 ---
-# Intended for use of MetalLB to create relatively fixed internal IP
-# for access from a VPN subnet
+# RTMP comes in via NodePort
 apiVersion: v1
 kind: Service
 metadata:
@@ -76,7 +75,7 @@ spec:
     targetPort: 1935
   selector:
     app: rtmp-relay
-  type: LoadBalancer
+  type: NodePort
 ---
 # For stream stat monitoring from internal network
 apiVersion: v1
