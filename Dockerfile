@@ -52,6 +52,7 @@ RUN apk --update add --virtual build_deps build-base zlib-dev pcre-dev libressl-
        --with-cc-opt='-g -O2 -fstack-protector-strong -Wformat -Werror=format-security -Wimplicit-fallthrough=0' \
        --with-ld-opt='-Wl,-z,relro -Wl,--as-needed' \
        --add-module=/tmp/nginx-rtmp-module/nginx-rtmp-module-$NGINX_RTMP_MODULE_VERSION \
+       --with-debug \
     && make install \
     && cd .. && rm -rf nginx-$NGINX_VERSION \
     && mkdir /var/cache/nginx \
