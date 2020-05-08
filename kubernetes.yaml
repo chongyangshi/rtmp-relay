@@ -37,7 +37,7 @@ spec:
             secretKeyRef:
               name: rtmp-relay
               key: push-rtmp-url
-        image: icydoge/web:rtmp-relay
+        image: icydoge/web:rtmp-relay-3320c14
         imagePullPolicy: IfNotPresent
         name: rtmp-relay
         ports:
@@ -69,9 +69,9 @@ metadata:
   namespace: default
 spec:
   ports:
-  - name: http
+  - name: rtmp
     nodePort: 31935
-    port: rtmp
+    port: 1935
     protocol: TCP
     targetPort: 1935
   selector:
@@ -86,7 +86,8 @@ metadata:
   namespace: default
 spec:
   ports:
-  - port: 8080
+  - name: http
+    port: 8080
     protocol: TCP
     targetPort: 8080
   selector:
